@@ -56,9 +56,14 @@ def find_library(possible_lib_names, search_symbol, library_name):
         possible_lib_names = [possible_lib_names]
 
     lib_names = []
+    fix_lib_names = ['sodium', 'crypto']
     for lib_name in possible_lib_names:
+        print(lib_name)
         lib_names.append(lib_name)
-        lib_names.append('lib' + lib_name)
+        if(lib_name not in fix_lib_names):
+            lib_names.append('lib' + lib_name)
+        else:
+            lib_names.append(lib_name)    
 
     for name in lib_names:
         if os.name == "nt":
